@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>My Form</title>
+    <script>
+      window.onload = function() {
+        window.history.pushState({}, null, "/home");
+      };
+    </script>
   </head>
   <body>
     <form action="/process-form" method="POST">
