@@ -7,10 +7,18 @@ public class Server {
 	public static void main(String[] args) throws IOException {
 		// create server socket on port 8080
 	    ServerSocket serverSocket = new ServerSocket(8080);
+	    Socket clientSocket;
 	
 	    // handles client connection
 	    while (true) {
-			Socket clientSocket = serverSocket.accept();
+	    	try {
+	    		System.out.println("Incoming client connection request");
+	    		clientSocket = serverSocket.accept();
+	    	} catch (IOException e) {
+	    		System.out.println("Client failed to connect");
+	    		break;
+	    	}
+			
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			String inputLine;
 				// handles client command
